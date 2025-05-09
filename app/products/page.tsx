@@ -22,184 +22,34 @@ import {
 } from "@/components/ui/pagination"
 
 // Sample products data - in a real app, this would come from an API
-const allProducts = [
-  {
-    id: 1,
-    name: "Premium Brake Pads - Toyota",
-    description: "High-performance ceramic brake pads for Toyota vehicles. Excellent stopping power and low dust.",
-    price: 4500,
-    image: "https://images.unsplash.com/photo-1486754735734-325b5831c3ad?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 10,
-    discountedPrice: 4050,
-    brand: "Brembo",
-    category: "Brake Systems",
-  },
-  {
-    id: 2,
-    name: "Engine Oil Filter - Universal",
-    description: "High-quality oil filter that removes contaminants and extends engine life.",
-    price: 1200,
-    image: "https://images.unsplash.com/photo-1620085790206-7a8a6547dc05?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Bosch",
-    category: "Engine Parts",
-  },
-  {
-    id: 3,
-    name: "LED Headlight Set - Subaru",
-    description: "Bright, energy-efficient LED headlights for Subaru models. Easy installation.",
-    price: 12000,
-    image: "https://images.unsplash.com/photo-1591293835940-934a7c4f2d9b?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 15,
-    discountedPrice: 10200,
-    brand: "Philips",
-    category: "Lighting",
-  },
-  {
-    id: 4,
-    name: "Alternator - Honda Accord",
-    description: "OEM quality alternator for Honda Accord. 2-year warranty included.",
-    price: 18500,
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Denso",
-    category: "Electrical",
-  },
-  {
-    id: 5,
-    name: "Shock Absorbers - Toyota",
-    description: "High-quality shock absorbers for Toyota vehicles. Provides a smooth, controlled ride.",
-    price: 7500,
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 5,
-    discountedPrice: 7125,
-    brand: "KYB",
-    category: "Suspension",
-  },
-  {
-    id: 6,
-    name: "Coil Springs - Honda",
-    description: "Performance coil springs for Honda vehicles. Lowers ride height and improves handling.",
-    price: 5800,
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Eibach",
-    category: "Suspension",
-  },
-  {
-    id: 7,
-    name: "Control Arms - Nissan",
-    description: "OEM quality control arms for Nissan vehicles. Direct replacement with perfect fit.",
-    price: 6200,
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 10,
-    discountedPrice: 5580,
-    brand: "Moog",
-    category: "Suspension",
-  },
-  {
-    id: 8,
-    name: "Strut Assembly - Subaru",
-    description: "Complete strut assembly for Subaru vehicles. Ready to install with no special tools required.",
-    price: 9500,
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Monroe",
-    category: "Suspension",
-  },
-  {
-    id: 9,
-    name: "Front Bumper - Toyota Corolla",
-    description: "OEM quality front bumper for Toyota Corolla. Direct replacement with perfect fit.",
-    price: 15000,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 5,
-    discountedPrice: 14250,
-    brand: "Toyota",
-    category: "Body Parts",
-  },
-  {
-    id: 10,
-    name: "Hood - Honda Civic",
-    description: "Lightweight aluminum hood for Honda Civic. Reduces weight and improves performance.",
-    price: 18500,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Honda",
-    category: "Body Parts",
-  },
-  {
-    id: 11,
-    name: "Side Mirror - Nissan",
-    description: "Electric side mirror for Nissan vehicles. Includes turn signal and heating element.",
-    price: 7500,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 10,
-    discountedPrice: 6750,
-    brand: "Nissan",
-    category: "Body Parts",
-  },
-  {
-    id: 12,
-    name: "Fender - Subaru",
-    description: "OEM quality fender for Subaru vehicles. Direct replacement with perfect fit.",
-    price: 8900,
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Subaru",
-    category: "Body Parts",
-  },
-  {
-    id: 13,
-    name: "Car Floor Mats - Universal",
-    description: "Heavy-duty rubber floor mats for all-weather protection. Custom fit for your vehicle.",
-    price: 3500,
-    image: "https://images.unsplash.com/photo-1549399542-7e8ee8c3a59e?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 5,
-    discountedPrice: 3325,
-    brand: "WeatherTech",
-    category: "Accessories",
-  },
-  {
-    id: 14,
-    name: "Dash Camera - HD",
-    description: "High-definition dash camera with night vision and motion detection. Includes 32GB memory card.",
-    price: 6500,
-    image: "https://images.unsplash.com/photo-1549399542-7e8ee8c3a59e?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Garmin",
-    category: "Accessories",
-  },
-  {
-    id: 15,
-    name: "Car Phone Mount",
-    description: "Adjustable car phone mount with wireless charging. Compatible with all smartphones.",
-    price: 2200,
-    image: "https://images.unsplash.com/photo-1549399542-7e8ee8c3a59e?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: 10,
-    discountedPrice: 1980,
-    brand: "iOttie",
-    category: "Accessories",
-  },
-  {
-    id: 16,
-    name: "Seat Covers - Premium",
-    description: "Premium leather seat covers for a luxurious look and feel. Custom fit for your vehicle.",
-    price: 8500,
-    image: "https://images.unsplash.com/photo-1549399542-7e8ee8c3a59e?q=80&w=300&h=300&auto=format&fit=crop",
-    discount: null,
-    discountedPrice: null,
-    brand: "Coverking",
-    category: "Accessories",
-  },
-]
+let allProducts = []; // Define allProducts globally
+
+async function fetchProducts() {
+  try {
+    const response = await fetch('http://127.0.0.1:4000/api/v1/products?per_page=10');
+    const data = await response.json();
+
+    allProducts = data.content.map(item => ({
+      id: item.id,
+      name: item.name,
+      description: item.description,
+      price: item.price ? Math.round(item.price * 100) : 0, // Convert to cents
+      image: item.imgUrl,
+      discount: item.discount,
+      discountedPrice: item.discount
+        ? Math.round(item.price * (1 - item.discount / 100) * 100)
+        : null,
+      brand: "Unknown Brand",       // Placeholder (since not in API)
+      category: "Unknown Category", // Placeholder (since not in API)
+    }));
+
+    console.log(allProducts); // You can remove this after verifying
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+  }
+}
+
+fetchProducts();
 
 // Get all unique categories and brands
 const allCategories = Array.from(new Set(allProducts.map((product) => product.category))).sort()
